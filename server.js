@@ -88,11 +88,7 @@ app.post("/api/characters", function(req, res) {
 
   res.json(newCharacter);
 });
-function listChar() {
-  for (let i = 0; i < characters.length; i++) {
-    document.getElementById()
-  }
-}
+
 
 // Starts the server to begin listening
 // =============================================================
