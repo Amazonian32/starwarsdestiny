@@ -49,7 +49,9 @@ app.get("/", function(req, res) {
 app.get("/add", function(req, res) {
   res.sendFile(path.join(__dirname, "add.html"));
 });
-
+app.get("/char/:routeName", function(req, res) {
+  res.sendFile(path.join(__dirname, "char.html"));
+});
 // Displays all characters
 app.get("/api/characters", function(req, res) {
   return res.json(characters);

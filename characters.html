@@ -20,55 +20,50 @@
       <h3>The greatest resource in the galaxy for Star Wars statistics!</h3>
       <hr>
       <a href="/add"><button class="btn btn-danger btn-lg"><span class="fa fa-plus"></span> Add New
-        Character</button></a>
-        <a href="/"><button class="btn btn-success btn-lg">HOME</button></a>
+          Character</button></a>
+      <a href="/"><button class="btn btn-success btn-lg">HOME</button></a>
     </div>
     <div class="row">
-        
-     
 
-        <div class="card">
-          <div class="card-header">
-            <h3><strong>Character Statistics</strong></h3>
-          </div>
-          <div class="card-body">
-            
-            <h2 id="name">Yoda</h2>
-            <div id="stats">
-              <h3><strong>Role:</strong> <span id="role">Jedi Master</span></h3>
-              <h3><strong>Age:</strong> <span id="age">900</span></h3>
-              <h3><strong>Force Points:</strong> <span id="force-points">18000</span></h3>
-            </div>
-          </div>
-          <div class="card-body">
-            <h2 id="name">Darth Maul</h2>
-            <div id="stats">
-              <h3><strong>Role:</strong> <span id="role">Sith Lord</span></h3>
-              <h3><strong>Age:</strong> <span id="age">200</span></h3>
-              <h3><strong>Force Points:</strong> <span id="force-points">1200</span></h3>
-            </div>
-          </div>
-          <div class="card-body">
-            <h2 id="name">Obi Wan Kenobi</h2>
-            <div id="stats">
-              <h3><strong>Role:</strong> <span id="role">Jedi Master</span></h3>
-              <h3><strong>Age:</strong> <span id="age">57</span></h3>
-              <h3><strong>Force Points:</strong> <span id="force-points">2000</span></h3>
-            </div>
-          </div>
+
+
+
+
+      <div class="card-body">
+
+
+        <div id="characters">
+
         </div>
       </div>
+
+
     </div>
   </div>
-  <script>
-
-    $.get("/api/characters", function(data){
-      console.log(data[i]);
-    })
-
-
+  </div>
+  <script type="text/javascript">
+    $(function () {
+      $.get("/api/characters/", function (data) {
+        data.forEach(function (character) {
+          $("#characters").append(
+            $("<div>").addClass("card")
+              .append(
+                $("<div>").addClass("card-header")
+                  .html(`<h3><strong>Character Statistics</strong> <a href="/char/${character.routeName}" >${character.routeName}</a></h3>`),
+                $("<div>").addClass("card-body")
+                  .append(
+                    $("<h4>").text(`${character.name}`),
+                    $("<h4>").text(`Role: ${character.role}`),
+                    $("<h4>").text(`Age: ${character.age}`),
+                    $("<h4>").text(`Force Points: ${character.forcePoints}`)
+                  )
+              )
+          )
+        })
+      });
+    });
   </script>
-  
+
 
 </body>
 
