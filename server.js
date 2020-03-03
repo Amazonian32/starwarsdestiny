@@ -54,7 +54,9 @@ app.get("/add", function(req, res) {
 app.get("/api/characters", function(req, res) {
   return res.json(characters);
 });
-
+app.get("/characters", function(req, res) {
+  res.sendFile(path.join(__dirname, "characters.html"));
+});
 // Displays a single character, or returns false
 app.get("/api/characters/:character", function(req, res) {
   var chosen = req.params.character;
@@ -86,6 +88,11 @@ app.post("/api/characters", function(req, res) {
 
   res.json(newCharacter);
 });
+function listChar() {
+  for (let i = 0; i < characters.length; i++) {
+    document.getElementById()
+  }
+}
 
 // Starts the server to begin listening
 // =============================================================
